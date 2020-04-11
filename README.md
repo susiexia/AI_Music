@@ -58,6 +58,7 @@ Inputing audio files converted into spectograms. The machine will train and lear
 
 **What is the model’s accuracy?**
 
+Our goal is the model to obtain 80% accuracy. 
 
 **How does this model work?**
 
