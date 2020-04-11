@@ -35,7 +35,7 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 
 **Communication Plan**
 
-| Meetings | Objective | Stakeholders | Frequency | Channels | Notes |
+| Communcations | Objective | Stakeholders | Frequency | Channels | Notes |
 | --- | --- | --- | --- | --- | --- |
 | Flex Session | Update and brainstorm project group | TA, Teacher, Team | twice a week | Zoom | The time to have direct communication and get support in class |
 | Quick Updates | Communicate with the team meembers | Team | As often as needed | Zoom and Slack | To share information with the team  outside of zoom meetings|  
@@ -44,18 +44,21 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 | Extra Help | Ask for help outside of class and team | The team member(s) and TA | TA office hours are held everyday | Zoom | If extra help is needed, and the team is struggling to find a solution, we will consult with a TA during office hours | 
 
 
-
-Class Updated     Updating and brainstorm
-
-
 ## Machine Learning Model
 
 Model: Neural Network (musical note and instrument)
+why? 
 
-Which model did you choose and why?
+The model will be able to learn with the data, and eventually be able to identify the musical note and instrument in the inputed audio file. 
+
 How are you training your model?
+
+
 What is the model’s accuracy?
+
+
 How does this model work?
+
 Model Output: 
 
 - Instrument : One out of the 14 instruments listed above
