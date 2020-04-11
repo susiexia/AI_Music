@@ -35,7 +35,7 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 
 **Communication Plan**
 
-| Communcations | Objective | Stakeholders | Frequency | Channels | Notes |
+| Communciations | Objective | Stakeholders | Frequency | Channels | Notes |
 | --- | --- | --- | --- | --- | --- |
 | Flex Session | Update and brainstorm project group | TA, Teacher, Team | twice a week | Zoom | The time to have direct communication and get support in class |
 | Quick Updates | Communicate with the team meembers | Team | As often as needed | Zoom and Slack | To share information with the team  outside of zoom meetings|  
