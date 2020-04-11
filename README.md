@@ -6,7 +6,7 @@
 
 https://zenodo.org/record/3685367#.Xo1NVi2ZOuU
 
-Orginally, this sound data set was recorded for a project called Studio On Line (SOL) at Ircam in Paris (1996-1999). The data set contains a intrument playing a single musical note . In total, there are 14 different instrumets, which are listed below. 
+Orginally, this sound data set was recorded for a project called Studio On Line (SOL) at Ircam in Paris (1996-1999). The data set contains an intrument playing a single musical note . In total, there are 14 different instruments, which are listed below. 
 
 1. Bass Tuba
 2. French Horn
@@ -29,7 +29,34 @@ The TinySOL data set contains 2913 audio WAV files at 44.1 kHz. Each audio file 
 
 Metadata Data:
 
-The TinySOL_metadata.csv contains text data and information of each path file in the TinySOL. The csv file contain the path, fold ID, instrument family, abbreviation, name, technique abbreviation and name, pitch, pitch ID, dynamic, dynamic ID, instance ID, string ID, and the need for digital retuning. 
+The TinySOL_metadata.csv contains text data and information of each path file in the TinySOL. The csv file contains the path, fold ID, instrument family, abbreviation, name, technique abbreviation and name, pitch, pitch ID, dynamic, dynamic ID, instance ID, string ID, and the need for digital retuning. 
+
+## Git hub
+
+**Communication Plan**
+
+| Name | Objective | Stakeholders | Frequency | Channels | Notes |
+| --- | --- | --- | --- | --- | --- |
+| Flex Session | Update and brainstorm project group | TA, Teacher, Team | twice a week | Zoom | The time to have direct communication and get support in class |
+| Quick Updates | Communicate with the team meembers | Team | As often as needed | Zoom and Slack | 
+
+Class Updated     Updating and brainstorm
+
+
+## Machine Learning Model
+
+Model: Neural Network (musical note and instrument)
+
+Which model did you choose and why?
+How are you training your model?
+What is the model’s accuracy?
+How does this model work?
+Model Output: 
+
+- Instrument : One out of the 14 instruments listed above
+- Note and Octave: The musical note letter and the octave number
+
+
 
 
 
