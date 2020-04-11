@@ -25,7 +25,7 @@ Orginally, this sound data set was recorded for a project called Studio On Line 
 
 TinySOL Data:
 
-The TinySOL data set contains 2913 audio WAV files at 44.1 kHz. Each audio file has an instrument playing one musical note. The information of the insturment family and sound, oridinary playng technique, pitch, dynamic, additional information can be found in the file path. Moreover, this information can be found in the metadata as text, which can be furthered cleaned, organized, and analyzed. 
+The TinySOL data set contains 2913 audio WAV files at 44.1 kHz. Each audio file has an instrument playing one musical note. The information of the insturment family and sound, oridinary playing technique, pitch, dynamic, additional information can be found in the file path. Moreover, this information can be found in the metadata as text, which can be furthered cleaned, organized, and analyzed. 
 
 Metadata Data:
 
@@ -40,7 +40,7 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 | Flex Session | Update and brainstorm project group | TA, Teacher, Team | twice a week | Zoom | The time to have direct communication and get support in class |
 | Quick Updates | Communicate with the team meembers | Team | As often as needed | Zoom and Slack | To share information with the team  outside of zoom meetings|  
 | Team Meetings | To ask for help, review weekly tasks and timelines,  review roles and responsibilities, and push final commit | Team | 2-3 times a week | Zoom | To complete all tasks and answer questions before the segment due dates 
-| Roles and Responsibilites, decision points, and notes | To review what tasks are assigned to each member and major decision points | Team | As often as needed | Google Docs | meeting minutes will be recorded in the google docs | 
+| Roles and Responsibilites, decision points, and notes | To review what tasks are assigned to each member and major decision points | Team | As often as needed | Google Docs | Meeting minutes will be recorded in the google docs | 
 | Extra Help | Ask for help outside of class and team | The team member(s) and TA | TA office hours are held everyday | Zoom | If extra help is needed, and the team is struggling to find a solution, we will consult with a TA during office hours | 
 
 
@@ -54,7 +54,7 @@ The model will be able to learn with the data, and eventually be able to identif
 
 **How are you training your model?**
 
-Inputing audio files converted into spectograms. The machine will train and learn by associated the image with the intrument and note.
+The inputed audio files will be converted into spectograms. The machine will train and learn by associating the image with the intrument and note.
 
 **What is the model’s accuracy?**
 
@@ -62,7 +62,7 @@ Our goal is the model to obtain 80% accuracy.
 
 **How does this model work?**
 
-We will be converting the audio files into a Fourier Transformation and Fast fourier Transformation, which is a signal/function into it's fundamental frequencies. Moreover, we will convert the FFT into a spectogram. We are feeding and training the machine associated notes and instruments to visual spectrograms. Eventually, the machine will able to be inputted an audio file, convert it into a spectogram and identify the instrument and musical note by associating it to a similar spectogram. 
+We will be converting the audio files into a Fourier Transformation and Fast fourier Transformation, which is a signal/function into it's fundamental frequencies. Moreover, we will convert the FFT into a spectogram image. We are feeding and training the machine to be able to identify the musical note and instrument to visual spectrograms. Eventually, the machine will take an inputted audio file, convert it into a spectogram, and identify the instrument and musical note by associating it to a similar spectogram that the machine was trained with. 
 
 **Model Output:** 
 
