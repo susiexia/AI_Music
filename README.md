@@ -2,16 +2,14 @@
 
 ## Presentation
 
-<<<<<<< HEAD
 **Reason why we selected this topic**
 
-Musical instruments have a wide range of shapes and sizes and the characteristics of one’s sound can just as well be distinct or similar to another instrument. An automatic music instruments recognition will not only distinguish between different types of instruments and their notes, but also may enable music search by instruments, helps recognize musical genres, or can make music transcription easier and more accurate. 
-=======
+Musical instruments have a wide range of shapes and sizes and the characteristics of one’s sound can just as well be distinct or similar to another instrument. An automatic music instruments recognition will not only distinguish between different types of instruments and their notes, but also may enable music search by instruments, helps recognize musical genres, trains and evaluates music information retrieval (MIR) systems, or can make music transcription easier and more accurate. 
 **Description of data source:**
 
-https://zenodo.org/record/3685367#.Xo1NVi2ZOuU
+<https://zenodo.org/record/3685367#.Xo1NVi2ZOuU>
 
-Orginally, this sound data set was recorded for a project called Studio On Line (SOL) at Ircam in Paris (1996-1999). The data set contains an intrument playing a single musical note . In total, there are 14 different instruments, which are listed below. 
+Orginally, this sound data set was recorded for a project called Studio On Line (SOL) at Ircam in Paris (1996-1999). We use the newest version 6.0 updated on Feb, 2020. The data set contains an intrument playing a single musical note. In total, there are 14 different instruments, which are listed below. 
 
 1. Bass Tuba
 2. French Horn
@@ -30,7 +28,7 @@ Orginally, this sound data set was recorded for a project called Studio On Line 
 
 TinySOL Data:
 
-The TinySOL data set contains 2913 audio WAV files at 44.1 kHz. Each audio file has an instrument playing one musical note. The information of the insturment family and sound, oridinary playing technique, pitch, dynamic, additional information can be found in the file path. Moreover, this information can be found in the metadata as text, which can be furthered cleaned, organized, and analyzed. 
+The TinySOL data set contains 2913 audio WAV files at 44.1 kHz. There are 5-fold split of TinySOL. This split has been carefully balanced in terms of instrumentation, pitch range, and dynamics. Each audio file has an instrument playing one musical note. The information of the insturment family and sound, oridinary playing technique, pitch, dynamic, additional information can be found in the file path. Moreover, this information can be found in the metadata as text, which can be furthered cleaned, organized, and analyzed. 
 
 Metadata Data:
 
@@ -51,7 +49,7 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 
 ## Machine Learning Model
 
-**Model:** Neural Network (musical note and instrument)
+**Model:** Deep Learning Neural Network (musical note and instrument)
 
 **why?** 
 
@@ -77,5 +75,4 @@ We will be converting the audio files into a Fourier Transformation and Fast fou
 
 
 
->>>>>>> master
 
