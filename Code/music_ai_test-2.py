@@ -6,6 +6,7 @@ from scipy.io import wavfile as wav
 from scipy.fftpack import fft
 import numpy as np
 import pandas as pd
+from config import awsS3_key
 # boto3 is a module to read data from S3 bucket in python.  
 #You need to install it using (pip install boto3)
 import boto3
@@ -14,7 +15,7 @@ import boto3
 client = boto3.client(
     's3',
     aws_access_key_id= 'AKIAIU2MIGCN6TKOZVBA',
-    aws_secret_access_key= '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'
+    aws_secret_access_key= awsS3_key
 )
 # Use the paginator funtion to go access through the folder and files in the S3 bucket
 paginator = client.get_paginator('list_objects')
