@@ -39,7 +39,7 @@ print(keylist[3])
 from scipy.io import wavfile as wav
 from scipy.fftpack import fft
 s3 = boto3.resource('s3', aws_access_key_id= 'AKIAIU2MIGCN6TKOZVBA',
-    aws_secret_access_key= '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')
+    aws_secret_access_key= awsS3_key)
 bucket = s3.Bucket('musicalinstrumentsaudiodataset')
 # Create an empty list to add the open .wav files in. 
 body1=[]
