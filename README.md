@@ -46,20 +46,24 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 
 ## Machine Learning Model
 
-Model: Neural Network (musical note and instrument)
-why? 
+**Model:** Neural Network (musical note and instrument)
+
+**why?** 
 
 The model will be able to learn with the data, and eventually be able to identify the musical note and instrument in the inputed audio file. 
 
-How are you training your model?
+**How are you training your model?**
+
+Inputing audio files converted into spectograms. The machine will train and learn by associated the image with the intrument and note.
+
+**What is the model’s accuracy?**
 
 
-What is the model’s accuracy?
+**How does this model work?**
 
+We will be converting the audio files into a Fourier Transformation and Fast fourier Transformation, which is a signal/function into it's fundamental frequencies. Moreover, we will convert the FFT into a spectogram. We are feeding and training the machine associatied notes and instruments to visual spectrograms. Eventually, the machine will able to be inputted an audio file, convert it into a spectogram and identify the instrument and musical note by associating it to a similar spectogram. 
 
-How does this model work?
-
-Model Output: 
+**Model Output:** 
 
 - Instrument : One out of the 14 instruments listed above
 - Note and Octave: The musical note letter and the octave number
