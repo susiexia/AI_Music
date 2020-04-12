@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from config import awsS3_key
 # boto3 is a module to read data from S3 bucket in python.  
-#You need to install it using (pip install boto3)
+# You need to install it using (pip3 install boto3)
 import boto3
 # %%
 # Connect to the S3 bucket by security credential (accesskeys)
