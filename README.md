@@ -75,6 +75,8 @@ We will be converting the audio files into a Fourier Transformation and Fast fou
 - Note and Octave: The musical note letter and the octave number
 
 
+## Database 
 
-
+During ETL process, we utilize PostGresDB to save transformed datasets as well as original metadata tables. The following image is schema Diagram:
+![Schema_Diagram.PNG](/Schema_Diagram.PNG)
 
