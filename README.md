@@ -2,6 +2,12 @@
 
 ## Presentation
 
+**Objectives**
+Use a deep learning neural network to predict a instrument and the note being played.
+
+**Hypothesis**
+Can a neural network predict which instrument and note is being played with better than 80% accuracy?
+
 **Reason why we selected this topic:**
 
 Musical instruments have a wide range of shapes and sizes and the characteristics of one’s sound can just as well be distinct or similar to another instrument. An automatic music instruments recognition will not only distinguish between different types of instruments and their notes, but also may enable music search by instruments, helps recognize musical genres, trains and evaluates music information retrieval (MIR) systems, or can make music transcription easier and more accurate.
@@ -77,6 +83,14 @@ We will be converting the audio files into a Fourier Transformation and Fast fou
 - Note and Octave: The musical note letter and the octave number
 
 
+## Database 
 
+We used AWS S3 bucket to store the audio files (.wav) dataset. A small sample of the .wav files is then extracted from the S3 Bucket using python library (boto3), converted the .wav files to spectrograms and created three dataframes that will later be used as an input to our machine learning model. Those three dataframes are: *notesdDf_Final*, *Instrument_DF_Final*, and *Instrument_notes_DF_Final*.Those dataframes are then loaded and saved as tables to a PostgresDB using the python library SqLAlchemy.   
 
+During ETL process, we utilize PostGresDB to save these created dataframes as well as original metadata tables. 
+*Notes_Sprectrogram_Table*, *Instruments_Sprectrogram_Table*, *Instruments__Notes_Sprectrogram_Table* are extracted, cleaned and transformed in data ETL process. Each of 3 tables contains Foreign Key referenced by Primary Key in original tables.
+
+**Schema Diagram**
+
+![Schema_Diagram.PNG](/Schema_Diagram.PNG)
 
