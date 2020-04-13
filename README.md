@@ -77,6 +77,9 @@ We will be converting the audio files into a Fourier Transformation and Fast fou
 
 ## Database 
 
-During ETL process, we utilize PostGresDB to save transformed datasets as well as original metadata tables. The following image is schema Diagram:
-![Schema_Diagram.PNG](/Schema_Diagram.PNG)
+During ETL process, we utilize PostGresDB to save transformed datasets as well as original metadata tables. 
+*Notes_Sprectrogram_Table*, *Instruments_Sprectrogram_Table*, *Instruments__Notes_Sprectrogram_Table* are extracted, cleaned and transformed in data ETL process. Each of 3 tables contains Foreign Key referenced by Primary Key in original tables.
 
+**Schema Diagram**
+
+![Schema_Diagram.PNG](/Schema_Diagram.PNG)
