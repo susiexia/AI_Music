@@ -10,7 +10,9 @@ Can a neural network predict which instrument and note is being played with bett
 
 **Reason why we selected this topic:**
 
-Musical instruments have a wide range of shapes and sizes and the characteristics of one’s sound can just as well be distinct or similar to another instrument. An automatic music instruments recognition will not only distinguish between different types of instruments and their notes, but also may enable music search by instruments, helps recognize musical genres, trains and evaluates music information retrieval (MIR) systems, or can make music transcription easier and more accurate. 
+Musical instruments have a wide range of shapes and sizes and the characteristics of one’s sound can just as well be distinct or similar to another instrument. An automatic music instruments recognition will not only distinguish between different types of instruments and their notes, but also may enable music search by instruments, helps recognize musical genres, trains and evaluates music information retrieval (MIR) systems, or can make music transcription easier and more accurate.
+
+If we are successful, we should be able to apply our model to other sound files/signals and make other types of predictions. For example, we could listen to a heart beat and distinguish a healthy heart from an unhealthy heart. We could identitfy a dog barking and filter it out from a phone call. Our model is a template for many types of signal processing applications.
 
 
 **Description of data source:**
@@ -59,7 +61,7 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 
 **Model:** Deep Learning Neural Network (musical note and instrument)
 
-**why?** 
+**Why?** 
 
 The model will be able to learn with the data, and eventually be able to identify the musical note and instrument in the inputed audio file. 
 
