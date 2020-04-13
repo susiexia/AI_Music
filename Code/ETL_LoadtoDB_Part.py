@@ -19,10 +19,10 @@ pitch_df.columns = ['Pitch', 'Pitch_ID']
 # load instrument general information into DataBase
 engine = create_engine(f'postgres://postgres:{db_password}@127.0.0.1:5432/AI_Music_DB')
 
-movies_with_ratings_df.to_sql(name='Instruments_table', con=engine, if_exists ='replace')
+instrument_category_df.to_sql(name='Instruments_table', con=engine, if_exists ='replace')
 
 # load pitch general information into DataBase
 engine = create_engine(f'postgres://postgres:{db_password}@127.0.0.1:5432/AI_Music_DB')
 
-movies_with_ratings_df.to_sql(name='Pitch_table', con=engine, if_exists ='replace')
+pitch_df.to_sql(name='Pitch_table', con=engine, if_exists ='replace')
 
