@@ -3,3 +3,9 @@
 
 # .DS_Store
 .DS_Store
+
+# config file
+config.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
