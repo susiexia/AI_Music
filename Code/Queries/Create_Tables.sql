@@ -10,7 +10,7 @@ CREATE TABLE Pitch_table (
 );
 
 -- ETL dataframes
-CREATE TABLE Notes_Sprectrogram_Table(
+CREATE TABLE Notes_Spectrogram_Table(
     Spectrogram ARRAY, -- Please review here
     Path VARCHAR,
     Pitch VARCHAR,
@@ -18,7 +18,7 @@ CREATE TABLE Notes_Sprectrogram_Table(
     FOREIGN KEY (Pitch) REFERENCES Pitch_table (Pitch)
 );
 
-CREATE TABLE Instruments_Sprectrogram_Table(
+CREATE TABLE Instruments_Spectrogram_Table(
     Spectrogram ARRAY, -- Please review here
     Path VARCHAR,
     Family VARCHAR,
@@ -27,7 +27,7 @@ CREATE TABLE Instruments_Sprectrogram_Table(
     FOREIGN KEY (Instrument_name) REFERENCES Instruments_table (Instrument_name)
 );
 
-CREATE TABLE Instruments__Notes_Sprectrogram_Table(
+CREATE TABLE Instruments__Notes_Spectrogram_Table(
     Spectrogram ARRAY, -- Please review here
     Path VARCHAR,
     Family VARCHAR,
