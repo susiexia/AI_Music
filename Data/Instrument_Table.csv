@@ -1,15 +1,15 @@
-﻿Instrument ID,Instrument Name,Family
-BTb,Bass Tuba,Brass
-Hn,French Horn,Brass
-Tbn,Trombone,Brass
-TpC,Trumpet in C,Brass
-Acc,Accordion,Keyboards
-Vc,Cello,Strings
-Cb,Contrabass,Strings
-Va,Viola,Strings
-Vn,Violin,Strings
-ASax,Alto Saxophone,Winds
-Bn,Bassoon,Winds
-ClBb,Clarinet in Bb,Winds
-Fl,Flute,Winds
-Ob,Oboe,Winds
+﻿Instrument ID,Instrument Name,Instrument Shortcut,Family
+30,Bass Tuba,BTb,Brass
+31,French Horn,Hn,Brass
+32,Trombone,Tbn,Brass
+33,Trumpet in C,TpC,Brass
+34,Accordion,Acc,Keyboards
+35,Cello,Vc,Strings
+36,Contrabass,Cb,Strings
+37,Viola,Va,Strings
+38,Violin,Vn,Strings
+39,Alto Saxophone,ASax,Winds
+40,Bassoon,Bn,Winds
+41,Clarinet in Bb,ClBb,Winds
+42,Flute,Fl,Winds
+43,Oboe,Ob,Winds
