@@ -1,7 +1,7 @@
 -- The purpose of this query is combine the notes and instruments table together.
 
-SELECT Spectrogram, File_Path, ins.Instrument_Name, Pitch, Note, Octave
-INTO Instruments_Notes_Spectrogram_Table
-FROM Notes_Spectrogram_Table AS ns
-INNER JOIN Instruments_Spectrogram_Table AS ins
-ON ns.Spectrogram = ins.Spectrogram;
+CREATE TABLE Instruments_Notes_Spectrogram_Table as
+select a."index",a."Spectrogram",a."File_Path", a."Note",a."Octave", a."Pitch",b."Instrument_name" 
+from public."Notes_Spectrogram_Table" a,
+public."Instruments_Spectrogram_Table" b
+where a."index" = b."index";
