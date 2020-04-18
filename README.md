@@ -2,6 +2,21 @@
 
 ## Presentation
 
+Google Slides: https://docs.google.com/presentation/d/1o4-t0NQkvq6Rk56Y5zcPnzM8eqBO47HIUeoQIurb6l8/edit?usp=sharing
+
+The slides contain the following from Segment 2 - presentation and dashboard:
+
+- Selected topic and reason topic was selected
+- Description of the source of data
+- Questions the team hopes to answer with the data
+- Description of the data exploration phase of the project
+- Description of the analysis phase of the project
+- Storyboard
+- Description of the tool(s) that will be used to create the final dashboard
+- Description of interactive element(s)
+
+
+
 **Objectives**
 Use a deep learning neural network to predict a instrument and the note being played.
 
