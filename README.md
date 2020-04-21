@@ -71,6 +71,27 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 | Roles and Responsibilites, decision points, and notes | To review what tasks are assigned to each member and major decision points | Team | As often as needed | Google Docs | Meeting minutes will be recorded in the google docs | 
 | Extra Help | Ask for help outside of class and team | The team member(s) and TA | TA office hours are held everyday | Zoom | If extra help is needed, and the team is struggling to find a solution, we will consult with a TA during office hours | 
 
+**Project Outline**
+
+1. Discovery Phase:
+
+We are continually exploring the sound files of the data by taking the audio file converting it into a Fourier Transformation and Fast Fourier Transformation, which will allow us to view the frequency of the pitch. Looking at the frequencies, we are exploring if we see or can calculate the difference between the same pitch. The same pitch should have the same frequency, therefore we are exploring  how the frequency between the instruments differ or if there are differences in the audio files.
+Furthermore, we are utilizing the Fourier Transformation and Fast Fourier Transformation and converting them to Spectrograms, which is a 2D image matrix representing the frequency and magnitude along with the time for a give signal.  We are using the Spectrogram images and using them to identify the instrument, musical note, and pitch. 
+
+2. Strategy Phase:
+
+Our analysis phase will consist of using the spectrogram images, which will now become more of a image classification problem.
+We are still exploring on how we are going to classify the images. We may use the mean of all the elements in the array per spectrogram image, or observe a group of array/pixels. This is still to be determined.
+We will be inputting this data into a convolusional neural network. Each spectrogram will be associated with a instrument, musical note, and pitch. We hope that the spectrograms will be similar across instruments and specific pitches, and our neural network will be able to learn based on this.
+
+
+3. Needs/Problems:
+
+To unify and uniform the WAV files, so the data can be more accurate. Also, the problem we need to identify is how we can and the best way to differentiate the instrument and the musical notes. 
+
+4. Goals and Objectives
+
+The goal and objective is to create a machine learning model to be able to identify the instrument and muscial note, and have an accuracy of 80%. Ultimately, we should be able to input a .WAV file, and the musical note and insturment can be identified while the file/sound is being played back. 
 
 ## Machine Learning Model
 
