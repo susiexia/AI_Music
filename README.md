@@ -16,7 +16,6 @@ The slides contain the following from Segment 2 - presentation and dashboard:
 - Description of interactive element(s)
 
 
-
 **Objectives**
 Use a deep learning neural network to predict a instrument and the note being played.
 
