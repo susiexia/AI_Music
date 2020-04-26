@@ -15,7 +15,6 @@ The slides contain the following from Segment 2 - presentation and dashboard:
 - Description of the tool(s) that will be used to create the final dashboard
 - Description of interactive element(s)
 
-
 **Objectives**
 Use a deep learning neural network to predict a instrument and the note being played.
 
@@ -93,6 +92,18 @@ To unify and uniform the WAV files, so the data can be more accurate. Also, the 
 The goal and objective is to create a machine learning model to be able to identify the instrument and muscial note, and have an accuracy of 80%. Ultimately, we should be able to input a .WAV file, and the musical note and insturment can be identified while the file/sound is being played back. 
 ## ETL
 
+**Extract:** 
+The .wav audio files are extracted from an AWS S3 bucket where the audiofile dataset is stored using python library boto3.
+
+**Transform:**
+Each .wav audio file is transformed into a spectrogram using librosa library. The list of spectrograms is then saved to a dataframe called *notes_df*. Also the TinySOL metadata.csv is saved into a dataframe called *tiny_soldf_sample*. The pitch data in this dataframe is transformed, where we used the split function on the pitch column in order to create a notes column and an octave column, that will be used later as inputs in the NN Model.
+
+We then merge the spectrograms dataframe to the metadata dataframe into a dataframe called *notesDf_merged*. We create two new dataframes from this merged dataframe.  The first dataframe is a dataframe that contains the audiofile path, spectrogram, pitch, note, and octave data *(all unnecessary columns are dropped)* and we named it *notesDF_Final*.  The second dataframe is a dataframe that contains the audiofile path, spectrogram and instrument name *(all unnecessary columns are dropped)* and we named it *Instrument_DF_Final*.
+
+**Load:**
+The two created dataframe *notesDF_Final* and *Instrument_DF_Final* are are then loaded and saved as tables to PostgresDB using the python library SqLAlchemy.
+
+
 
 ## Machine Learning Model
 
@@ -121,7 +132,7 @@ Output: We took the data from postgress, and converted the categorical columns i
 
 **✓ Description of preliminary feature engineering and preliminary feature selection, including their decision making process** 
 
-We chose the spectrogram because it breaks down the sinal into frequency in an image and reduces noise, therefore it is easy to process in a neural network. This results the model to become an image classification. 
+We chose the spectrogram because it breaks down the signal into frequency in an image and reduces noise, therefore it is easy to process in a neural network. This results the model to become an image classification. 
 
 **✓ Description of how data was split into training and testing sets** 
 
@@ -146,11 +157,9 @@ Limitations:
 
 ## Database 
 
-We used AWS S3 bucket to store the audio files (.wav) dataset. A small sample of the .wav files is then extracted from the S3 Bucket using python library (boto3), converted the .wav files to spectrograms and created three dataframes that will later be used as an input to our machine learning model. Those three dataframes are: *notesdDf_Final*, *Instrument_DF_Final*, and *Instrument_notes_DF_Final*.Those dataframes are then loaded and saved as tables to a PostgresDB using the python library SqLAlchemy.   
+We used AWS S3 bucket to store the audio files (.wav) dataset. The .wav files are extracted from the S3 Bucket and converted into spectrograms. Two dataframes are created, loaded and saved as tables to PostgresDB *(Please refer to ETL Section for more details)*. The two tables create are called *Notes_Spectrogram_Table* and *Instruments_Spectrogram_Table*.  Those two tables are then joined using an sql query to create a third table that contains spectrograms, instruments, and notes data.  
 
-During ETL process, we utilize PostGresDB to save these created dataframes as well as original metadata tables. 
-*Notes_Sprectrogram_Table*, *Instruments_Sprectrogram_Table*, *Instruments__Notes_Sprectrogram_Table* are extracted, cleaned and transformed in data ETL process. Each of 3 tables contains Foreign Key referenced by Primary Key in original tables.
-
+PostGresDB is also used to create tables from original metadata files. 
 **Schema Diagram**
 
 ![Schema_Diagram.PNG](/Schema_Diagram.PNG)
