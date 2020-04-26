@@ -91,10 +91,12 @@ To unify and uniform the WAV files, so the data can be more accurate. Also, the 
 4. Goals and Objectives
 
 The goal and objective is to create a machine learning model to be able to identify the instrument and muscial note, and have an accuracy of 80%. Ultimately, we should be able to input a .WAV file, and the musical note and insturment can be identified while the file/sound is being played back. 
+## ETL
+
 
 ## Machine Learning Model
 
-**Model:** Deep Learning Neural Network (musical note and instrument)
+**Model:** Deep Learning Neural Network (musical note and instrument) - Convolutional Neural Network
 
 **Why?** 
 
@@ -110,8 +112,32 @@ Our goal is the model to obtain 80% accuracy.
 
 **How does this model work?**
 
-We will be converting the audio files into a Fourier Transformation and Fast fourier Transformation, which is a signal/function into it's fundamental frequencies. Moreover, we will convert the FFT into a spectogram image. We are feeding and training the machine to be able to identify the musical note and instrument to visual spectrograms. Eventually, the machine will take an inputted audio file, convert it into a spectogram, and identify the instrument and musical note by associating it to a similar spectogram that the machine was trained with. 
+- The input: one channel spectrogram 22, 128
 
+**✓ Description of preliminary data preprocessing**
+
+Input: Loaded the spectrogram , and converted series to the numpy array
+Output: We took the data from postgress, and converted the categorical columns into numerical column in the dataframe, such as note and instrument.
+
+**✓ Description of preliminary feature engineering and preliminary feature selection, including their decision making process** 
+
+We chose the spectrogram because it breaks down the sinal into frequency in an image and reduces noise, therefore it is easy to process in a neural network. This results the model to become an image classification. 
+
+**✓ Description of how data was split into training and testing sets** 
+
+We the training and testing sets into 25 and 75 respectively. 
+
+**✓ Explanation of model choice, including limitations and benefits**
+
+Convolutional neural network 
+
+Benefits: We can apply out model to other sound files/signals and make other types of predictions. This model performs well with visual classification problems. 
+
+Limitations: 
+ - We may get a less accuracy for higher sample rates because there will be more samples with higher frequency due to the over tones.
+ - Notes played simultaneously, such as chords, may be difficult to identify because the frequncy waves will deconstruct.  
+ - similar neighboring pixels can often be assumed to belong to the same visual object but in sound, frequencies are most often non-locally distributed on the spectrogram
+ 
 **Model Output:** 
 
 - Instrument : One out of the 14 instruments listed above
