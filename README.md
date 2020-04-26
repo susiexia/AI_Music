@@ -15,8 +15,6 @@ The slides contain the following from Segment 2 - presentation and dashboard:
 - Description of the tool(s) that will be used to create the final dashboard
 - Description of interactive element(s)
 
-
-
 **Objectives**
 Use a deep learning neural network to predict a instrument and the note being played.
 
@@ -93,6 +91,7 @@ To unify and uniform the WAV files, so the data can be more accurate. Also, the 
 
 The goal and objective is to create a machine learning model to be able to identify the instrument and muscial note, and have an accuracy of 80%. Ultimately, we should be able to input a .WAV file, and the musical note and insturment can be identified while the file/sound is being played back. 
 ## ETL
+
 **Extract:** 
 The .wav audio files are extracted from an AWS S3 bucket where the audiofile dataset is stored using python library boto3.
 
@@ -103,6 +102,7 @@ We then merge the spectrograms dataframe to the metadata dataframe into a datafr
 
 **Load:**
 The two created dataframe *notesDF_Final* and *Instrument_DF_Final* are are then loaded and saved as tables to PostgresDB using the python library SqLAlchemy.
+
 
 
 ## Machine Learning Model
@@ -132,7 +132,7 @@ Output: We took the data from postgress, and converted the categorical columns i
 
 **✓ Description of preliminary feature engineering and preliminary feature selection, including their decision making process** 
 
-We chose the spectrogram because it breaks down the sinal into frequency in an image and reduces noise, therefore it is easy to process in a neural network. This results the model to become an image classification. 
+We chose the spectrogram because it breaks down the signal into frequency in an image and reduces noise, therefore it is easy to process in a neural network. This results the model to become an image classification. 
 
 **✓ Description of how data was split into training and testing sets** 
 
