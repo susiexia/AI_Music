@@ -2,7 +2,7 @@
 
 ## Presentation
 
-Google Slides: https://docs.google.com/presentation/d/1o4-t0NQkvq6Rk56Y5zcPnzM8eqBO47HIUeoQIurb6l8/edit?usp=sharing
+[Link to Presentation](https://docs.google.com/presentation/d/1o4-t0NQkvq6Rk56Y5zcPnzM8eqBO47HIUeoQIurb6l8/edit?usp=sharing)
 
 The slides contain the following from Segment 2 - presentation and dashboard:
 
@@ -30,7 +30,7 @@ If we are successful, we should be able to apply our model to other sound files/
 
 **Description of data source:**
 
-<https://zenodo.org/record/3685367#.Xo1NVi2ZOuU>
+[Data Source](https://zenodo.org/record/3685367#.Xo1NVi2ZOuU)
 
 Orginally, this sound data set was recorded for a project called Studio On Line (SOL) at Ircam in Paris (1996-1999). We use the newest version 6.0 updated on Feb, 2020. The data set contains an intrument playing a single musical note. In total, there are 14 different instruments, which are listed below. 
 
@@ -107,52 +107,43 @@ The two created dataframe *notesDF_Final* and *Instrument_DF_Final* are are then
 
 ## Machine Learning Model
 
-**Model:** Deep Learning Neural Network (musical note and instrument) - Convolutional Neural Network
+**Model Type:**
+Convolutional Neural Network (CNN)
 
-**Why?** 
-
-The model will be able to learn with the data, and eventually be able to identify the musical note and instrument in the inputed audio file. 
+**Why use a convolutional neural network (CNN)?** 
+Although there are simpler ways to identify pitch (a simple band pass filter), we want to build a model that can be easily modified to identify different sound types (dog barking, keyboard typing, cars, etc.).
 
 **How are you training your model?**
-
-The inputed audio files will be converted into spectograms. The machine will train and learn by associating the image with the intrument and note.
+The inputed audio files will be converted into spectograms (arrays). These spectrograms are our only input into the CNN. We will use two different spectrograms to train our two CNNs. The CNN that identifies pitch will be trained with short spectrograms from the middle of the audio file. The CNN that identifies insturments will be trained with longer spectrograms that begin at the start of the audio file.
 
 **What is the model’s accuracy?**
-
-Our goal is the model to obtain 80% accuracy. 
+We currently have three working scripts. All have a test accuracy greater than 90% for pitch prediction and greater than 85% for insturment prediction.
 
 **How does this model work?**
-
 - The input: one channel spectrogram 22, 128
 
 **✓ Description of preliminary data preprocessing**
-
 Input: Loaded the spectrogram , and converted series to the numpy array
 Output: We took the data from postgress, and converted the categorical columns into numerical column in the dataframe, such as note and instrument.
 
 **✓ Description of preliminary feature engineering and preliminary feature selection, including their decision making process** 
-
-We chose the spectrogram because it breaks down the signal into frequency in an image and reduces noise, therefore it is easy to process in a neural network. This results the model to become an image classification. 
+We chose to train with spectrograms because they deconstruct sound signals into their constituent frequencies, and plots them over time. Spectrograms are interpreted as arrays, which can be easily fed into a neural network.
 
 **✓ Description of how data was split into training and testing sets** 
-
-We the training and testing sets into 25 and 75 respectively. 
+We the training and testing sets into 25 and 75 respectively. We use sklearn.model_selection.train_test_split to split the data. The data is split into training and testing sets into 25 and 75 respectively. We use stratify = <output> to ensure our data is split uniformly.
 
 **✓ Explanation of model choice, including limitations and benefits**
-
-Convolutional neural network 
-
-Benefits: We can apply out model to other sound files/signals and make other types of predictions. This model performs well with visual classification problems. 
+Convolutional Neural Network 
+Benefits: We can apply out model to other sound files/signals and make other types of predictions. This model performs well with visual classification problems (our spectrograms). 
 
 Limitations: 
- - We may get a less accuracy for higher sample rates because there will be more samples with higher frequency due to the over tones.
- - Notes played simultaneously, such as chords, may be difficult to identify because the frequncy waves will deconstruct.  
- - similar neighboring pixels can often be assumed to belong to the same visual object but in sound, frequencies are most often non-locally distributed on the spectrogram
+ - We may get a less accuracy when there are lower sample rates because higher frequencies will not be preserved.
+ - Notes played simultaneously, such as chords, may be difficult to identify because the frequncies could deconstruct one another.  
+ - Similar neighboring pixels can often be assumed to belong to the same visual object. However in sound, different frequencies can be neighbors on the spectrogram
  
 **Model Output:** 
-
-- Instrument : One out of the 14 instruments listed above
-- Note and Octave: The musical note letter and the octave number
+- Instrument: One out of the 14 instruments listed earlier
+- Pitch (note and octave): The musical note letter and the octave number
 
 
 ## Database 
