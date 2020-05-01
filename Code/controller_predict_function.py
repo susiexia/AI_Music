@@ -55,7 +55,7 @@ inst  # output is an array with 14 elements
 
 # %%
 # reverse the to_categorical and get 
-reversed_inst =  numpy.argmax(inst, axis=None, out=None)
+reversed_inst =  np.argmax(inst, axis=None, out=None)
 reversed_inst  # output is 2
 
 # %%
