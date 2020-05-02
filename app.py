@@ -2,7 +2,11 @@ from flask import Flask, render_template, request
 #from euwerkzg import secure_filename
 from werkzeug.utils import secure_filename
 import pickle 
-
+# Import .ipynb scripts (should be in parent directory)
+import preprocess
+import load_model # probably don't need to import this
+import predict_pitch
+import predict_inst
 
 model = None
 app = Flask(__name__, static_url_path ="/tmp")
