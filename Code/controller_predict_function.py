@@ -4,13 +4,12 @@ import librosa
 from sklearn.preprocessing import normalize
 import pickle
 import keras
-# %%
 import numpy as np
 import soundfile as sf
 # %%
 #--------------------------------TEST ETL Part----------------------------
 
-file_name = '../Resources/AudioFiles/TinySOL/Brass/Bass_Tuba/ordinario/BTb-ord-C3-ff-N-T18u.wav'
+file_name = '../Resources/AudioFiles/TinySOL/Strings/Viola/ordinario/Va-ord-C3-pp-4c-N.wav'
 
 f = sf.SoundFile(file_name)
 
@@ -21,11 +20,10 @@ audio, sample_rate = librosa.load(file_name, offset=length/6, duration=1, res_ty
 # mfccs = librosa.feature.mfcc(y=audio, sr=sample_rate, fmax=max_frequency)
 mfccs = librosa.feature.melspectrogram(y=audio, sr=sample_rate)
 mfccs_norm = normalize(mfccs.T, axis=0, norm='max')
-mfccs_norm.shape
 
-# %%
 channels = 1 # number of audio channels
-spectrogram_shape1 = (channels,) + mfccs_norm.shape + (channels,)
+row = 1 
+spectrogram_shape1 = (1,) + mfccs_norm.shape + (channels,)
 
 #x_reshape = np.array(i.reshape( (spectrogram_shape1) ) for i in mfccs_norm) 
 x_reshape = mfccs_norm.reshape( (spectrogram_shape1) ) 
@@ -44,8 +42,19 @@ with open('../Result_models/PKL_trained_instruments_model.pkl', 'rb') as instru_
 # create a function for inst pred
 
 def predict_instrument(input_x):
-    inst_pred = model.predict(input_x)
-    return inst_pred  #Numpy array(s) of predictions.
+    # create a instrument and scalar table
+    instName_list = ['Bass Tuba','French','Trombone','Trumpet','Accordion','Cello','Contrabass',
+                'Viola', 'Violin','Alto Saxophone','Bassoon','Clarinet in Bb',
+                'Flute','Oboe']
+    # inst_model to predict
+    inst_result = model.predict(input_x)
+    
+    # reverse to_categorical function, get correlated inst_name
+    inst_scalar =  np.argmax(inst_result, axis=None, out=None)
+    
+    inst_pred = instName_list[inst_scalar]
+    
+    return inst_pred  
 
 # %%
 # call predict function
@@ -55,7 +64,8 @@ inst  # output is an array with 14 elements
 
 # %%
 # reverse the to_categorical and get 
-reversed_inst =  np.argmax(inst, axis=None, out=None)
-reversed_inst  # output is 2
+#reversed_inst =  np.argmax(inst, axis=None, out=None) 
+#[np.argmax(y, axis=None, out=None) for y in inst]
+# output is 2
 
 # %%
