@@ -36,7 +36,7 @@ def upload_file():
    if request.method == 'POST': 
       f = request.files['file']
       if   not "." in f.filename:
-         return 
+         return render_template('error.html')
       
       ext = f.filename.rsplit(".", 1)[1]
 
