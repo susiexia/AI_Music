@@ -4,20 +4,36 @@ from werkzeug.utils import secure_filename
 import pickle 
 # Import .ipynb scripts (should be in parent directory)
 import preprocess
-import load_model # probably don't need to import this
+#import load_model # probably don't need to import this
 import predict_pitch
 import predict_inst
 
-model = None
+
+inst_model = None
+pitch_model = None
+
 app = Flask(__name__, static_url_path ="/tmp")
 app.config["ALLOWED_EXTENSIONS"] = ["wav", "WAV"]
 
-def load_model():    
-   global model    
+#----------------------------------load_models BEGIN--------------------------------------------------------
+def load_inst_model():    
+   global inst_model    
    # model variable refers to the global variable, So we dont need to run model code everytime
-   with open('PKL_trained_instruments_model.pkl', 'rb') as instru_f:        
-      model = pickle.load(instru_f)
+   with open('../Result_models/PKL_trained_instruments_model.pkl', 'rb') as instru_f:        
+      inst_model = pickle.load(instru_f)
 
+def load_CV_inst_model():    
+   global inst_model    
+   # model variable refers to the global variable, So we dont need to run model code everytime
+   with open('../Result_models/CV_PKL_trained_instruments_model.pkl', 'rb') as CV_instru_f:        
+      CV_inst_model = pickle.load(CV_instru_f)
+
+def load_pitch_model():    
+   global pitch_model    
+   with open('../Result_models/PKL_trained_pitch_model.pkl', 'rb') as pitch_f:        
+      pitch_model = pickle.load(pitch_f)
+
+#----------------------------------load_models END--------------------------------------------------------
 
 #def preprocessing(file_binary):
    # preprocessing data from audio to spectrogram
@@ -65,4 +81,5 @@ def upload_file():
         
 
 if __name__ == '__main__':
+
    app.run(debug = True)
