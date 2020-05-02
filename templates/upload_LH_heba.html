@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+   <style>
+     
+     body{
+        font-family:Georgia, Times,serif;}
+     h1, p{ text-align: center;
+         ;}
+     form { margin: 0 auto;
+      width: 250px
+   }
+   .header {
+  padding: 15px;
+  width: 100%;
+  top: 0;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 20px;
+}
+   
+   footer{
+      padding:60 px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: left;
+      background: DarkTurquoise;
+      color: white;
+      font-size: 15px;}
+   
+   </style>
+  
+   <body style = "background-color :LightBlue;">
+      <div class = "header">
+         <h1>Instrument & Pitch Identifier</h1>
+      </div>
+      <di id = "loader">
+         <h1>Upload Audio File</h1>
+      <form action = "https://api.cloudinary.com/v1_1/dmqj5ypfp/auto/upload" method = "POST" enctype="multipart/form-data">
+         <input type="hidden" name="upload_preset" value="q8vijdwg" />
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form> 
+      <footer>
+         <h1> Objective: </h1>
+         <p> blah</p>
+         <h3> Create By: Heba Aly, Francis Palaez, Susie Xia, Michael Nakashima, Louise Hsu</h3>
+      </footer>
+      </div>
+      
+      
+      
+   
+   </body>
+
+</html>
+
+</html>
