@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 
 import pickle
-
+import cloudinary
 # URL 
 import soundfile as sf
 from six.moves.urllib.request import urlopen
@@ -169,14 +169,14 @@ def predict_instrument(url):
 # %%
 # -----------------------TESTING with local file path------------------------------
 url = "https://raw.githubusercontent.com/susiexia/AI_Music/susie/BTb-ord-A%231-ff-N-T30d.wav"
-
+#url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588458002/Uploaded_audio/pvec0hork8yh2r6n8voc.wav"
 predict_pitch(url)            # OUTPUT IS A STRING 
 
 # %%
 # -----------------------TESTING with local file path------------------------------
 #file_name = 'Resources/AudioFiles/TinySOL/Strings/Viola/ordinario/Va-ord-C3-pp-4c-N.wav'
 url = "https://raw.githubusercontent.com/susiexia/AI_Music/susie/BTb-ord-A%231-ff-N-T30d.wav"
-
+#url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588458002/Uploaded_audio/pvec0hork8yh2r6n8voc.wav"
 predict_instrument(url)            # OUTPUT IS A STRING 
 
 
