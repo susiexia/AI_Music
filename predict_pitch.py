@@ -1,18 +1,20 @@
-
+# %%
 import numpy as np
+import pandas as pd 
+# create a function for pitch pred
+def predict_pitch(input_x):
 
-# create a function for inst pred
-def predict_instrument(input_x):
-    # create a instrument and scalar table
-    instName_list = ['Bass Tuba','French','Trombone','Trumpet','Accordion','Cello','Contrabass',
-                'Viola', 'Violin','Alto Saxophone','Bassoon','Clarinet in Bb',
-                'Flute','Oboe']
-    # inst_model to predict
-    inst_result = inst_model.predict(input_x)
+    # extract pitch names from csv to be a list
+    pitch_Name_df = pd.read_csv('Data/pitchName.csv')
+    pitch_name_list = pitch_Name_df['0'].tolist()
+
+    # pitch_model (from app.py) to predict
+    pitch_result = pitch_model.predict(input_x)
     
-    # reverse to_categorical function, get correlated inst_name
-    inst_scalar =  np.argmax(inst_result, axis=None, out=None)
+    # reverse to_categorical function, get correlated pitch_name
+    pitch_scalar =  np.argmax(pitch_result, axis=None, out=None)
     
-    inst_pred = instName_list[inst_scalar]
+    pitch_pred = pitch_Name_list[pitch_scalar]
     
-    return inst_pred  
+    return pitch_pred  
+# %%
