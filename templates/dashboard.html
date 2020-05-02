@@ -1,14 +1,49 @@
 <!DOCTYPE html>
+<style>
+    img.medium{
+        width: 5 px;
+        height: 5 px;
+    }
+</style>
 <html lang="en">
- <head>
-     <title> Addiing HTML Audio</title>
- </head>
- <body>
+    <body>
+        <h1>Audio Dashboard</h1>
+         <h3> The Audio File was sucessfully downloaded</h3>
+        <hr/>
 
-    <audio id= "player" controls>
-        <source src= "../Acc-ord-A2-ff-N-N.wav" type= "audio/mp3">
-    </audio>
+        <h2>Playback</h2>
+        
+        <audio controls="controls">
+            Your browser does not support the audio element.
+            <source src="music.wav" type="audio/wav">
+        
+        </audio>
+        <hr/>
+        <h2> Spectrogram image</h2>
+        <img src = "https://upload.wikimedia.org/wikipedia/commons/c/c5/Spectrogram-19thC.png" />
+        <hr/>
+        <h2> Identified Instrument and Note</h2>
+        <h3> {{ predicted_pitch }}</h3>
+        <h3> {{predicted_inst}}</h3>
+        <hr/>
+        <h2> Machine Learning Models</h2>
+        <h3>Pitch Model</h3>
+        <img src = "https://i.imgur.com/lEGm3Y6.png"/>
+        <h3>Pitch Accuracy- epoch= 10</h3>
+        <img src = "https://i.imgur.com/u4EmDwb.png"/>
+        <h3>Pitch Accuracy Plots</h3>
+        <img src = "https://i.imgur.com/FCjNh3Z.png"/>
+        <h3> Instrument Model</h3>
+        <img src = "https://i.imgur.com/Gg4WwW7.png" class = "medium" alt="instrument"/>
+        <h3>Instrument Accuracy - epoch = 35</h3>
+        <img src = "https://i.imgur.com/8ETBKQG.png"/>
+        <h3> Instrument Accuracy Plots</h3>
+        <img src = "https://i.imgur.com/gTQexaO.png"/>
+        <hr/>
 
-     script 
- </body>
-<html>
+        
+           
+           
+           
+    </body>
+ </html>
