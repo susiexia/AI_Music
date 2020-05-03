@@ -5,13 +5,17 @@ import pandas as pd
 import librosa
 import librosa.display
 from sklearn.preprocessing import normalize
+from keras.models import load_model
 
 # buff depedence 
 import os
 import io
 import cv2 
 import matplotlib.pyplot as plt
-
+import tensorflow as tf
+import tensorflow_core
+import keras
+#from keras.models import Model 
 
 import pickle
 import cloudinary
@@ -72,10 +76,11 @@ def predict_pitch(url):
     
     # --------------------------------Load trained pitch model--------------------------
     # load trained pitch model
-    global pitch_model
-    with open('Result_models/PKL_trained_pitch_model.pkl', 'rb') as pitch_f:        
-        pitch_model = pickle.load(pitch_f)
-
+    #global pitch_model
+    #with open('PKL_trained_pitch_model.pkl', 'rb') as pitch_f:        
+     #   pitch_model = pickle.load(pitch_f)
+    pitch_model = tf.keras.models.load_model('pitch_model.h5')
+    
 
     # --------------------------------PREDICTION --------------------------
     # pitch_model (from app.py) to predict
@@ -145,10 +150,11 @@ def predict_instrument(url):
     
     # --------------------------------Load trained inst model--------------------------
     # load trained inst model
-    global inst_model
-    with open('Result_models/CV_PKL_trained_instruments_model.pkl', 'rb') as inst_f:        
-        inst_model = pickle.load(inst_f)
-
+    #global inst_model
+    #with open('CV_PKL_trained_instruments_model.pkl', 'rb') as inst_f:        
+    #    inst_model = pickle.load(inst_f)
+    #from keras.models import load_model
+    inst_model = tf.keras.models.load_model('CV_trained_intruments_model.h5')
 
     # --------------------------------PREDICTION --------------------------
     # inst_model (from app.py) to predict
@@ -168,15 +174,15 @@ def predict_instrument(url):
 
 # %%
 # -----------------------TESTING with local file path------------------------------
-url = "https://raw.githubusercontent.com/susiexia/AI_Music/susie/BTb-ord-A%231-ff-N-T30d.wav"
-#url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588458002/Uploaded_audio/pvec0hork8yh2r6n8voc.wav"
+#url = "https://raw.githubusercontent.com/susiexia/AI_Music/susie/BTb-ord-A%231-ff-N-T30d.wav"
+url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588480295/Uploaded_audio/euzkrwcoshxinmciwofi.wav"
 predict_pitch(url)            # OUTPUT IS A STRING 
 
 # %%
 # -----------------------TESTING with local file path------------------------------
 #file_name = 'Resources/AudioFiles/TinySOL/Strings/Viola/ordinario/Va-ord-C3-pp-4c-N.wav'
-url = "https://raw.githubusercontent.com/susiexia/AI_Music/susie/BTb-ord-A%231-ff-N-T30d.wav"
-#url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588458002/Uploaded_audio/pvec0hork8yh2r6n8voc.wav"
+#url = "https://raw.githubusercontent.com/susiexia/AI_Music/susie/BTb-ord-A%231-ff-N-T30d.wav"
+url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588480295/Uploaded_audio/euzkrwcoshxinmciwofi.wav"
 predict_instrument(url)            # OUTPUT IS A STRING 
 
 
