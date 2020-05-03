@@ -14,7 +14,9 @@ import pickle
 
 
 # import 2 functions for ETL, load models and prediction
-#import predict_pipeline
+import URLtest_predict_pipeline
+import cloudinary
+import cloudinary.uploader
 
 
 inst_model = None
@@ -45,7 +47,7 @@ def load_inst_model():
 
 @app.route('/')
 def first_upload_file():
-   return render_template('upload.html')
+   return render_template('upload_LH.html')
 
 
 
@@ -64,14 +66,14 @@ def upload_file():
          
          #f.save(secure_filename(f.filename))
          #file_name = (f.filename)
-         
-         # wavURL = '<wav file url goes here>'
-         # predicted_pitch = predict_pitch.predict_pitch_function(wavURL)
-         # predicted_inst = predict_inst.predict_inst_function(wavURL)
+         result = cloudinary.uploader.unsigned_upload(f, upload_preset= 'q8vijdwg', cloud_name = 'dmqj5ypfp', resource_type='auto' )
+         wavURL = result['url']
+         predicted_pitch = URLtest_predict_pipeline.predict_pitch(wavURL)
+         predicted_inst = URLtest_predict_pipeline.predict_instrument(wavURL)
 
          #testing 
-         predicted_pitch = 'A3'
-         predicted_inst = 'Piano'
+         #predicted_pitch = 'A3'
+         #predicted_inst = 'Piano'
          return render_template('dashboard.html', predicted_pitch = predicted_pitch, predicted_inst = predicted_inst) 
       
       else: 
