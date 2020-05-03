@@ -12,16 +12,20 @@ import os
 import io
 import cv2 
 import matplotlib.pyplot as plt
-import tensorflow as tf
-import tensorflow_core
-import keras
-#from keras.models import Model 
 
-import pickle
-import cloudinary
 # URL 
+import cloudinary
 import soundfile as sf
 from six.moves.urllib.request import urlopen
+
+import tensorflow as tf
+
+# unuse dependencies
+
+#import tensorflow_core
+#import keras
+#import pickle
+#from keras.models import Model
 # %%
 '''This python script includes 2 functions, predict_pitch and predict_instrument'''
 # %%
@@ -76,7 +80,6 @@ def predict_pitch(url):
     
     # --------------------------------Load trained pitch model--------------------------
     # load trained pitch model
-    #global pitch_model
     #with open('PKL_trained_pitch_model.pkl', 'rb') as pitch_f:        
      #   pitch_model = pickle.load(pitch_f)
     pitch_model = tf.keras.models.load_model('pitch_model.h5')
@@ -150,7 +153,6 @@ def predict_instrument(url):
     
     # --------------------------------Load trained inst model--------------------------
     # load trained inst model
-    #global inst_model
     #with open('CV_PKL_trained_instruments_model.pkl', 'rb') as inst_f:        
     #    inst_model = pickle.load(inst_f)
     #from keras.models import load_model
