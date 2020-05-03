@@ -1,4 +1,4 @@
-# %%
+
 import numpy as np
 import pandas as pd 
 
@@ -12,19 +12,23 @@ import os
 import io
 import cv2 
 import matplotlib.pyplot as plt
-import tensorflow as tf
-import tensorflow_core
-import keras
-#from keras.models import Model 
 
-import pickle
-import cloudinary
 # URL 
+import cloudinary
 import soundfile as sf
 from six.moves.urllib.request import urlopen
+
+import tensorflow as tf
+
+# unuse dependencies
+
+#import tensorflow_core
+#import keras
+#import pickle
+#from keras.models import Model
 # %%
 '''This python script includes 2 functions, predict_pitch and predict_instrument'''
-# %%
+
 # create a function for pitch pred
 def predict_pitch(url):
     '''This function includes ETL process, loading trained model, 
@@ -37,12 +41,16 @@ def predict_pitch(url):
     #audio, sample_rate = librosa.load(input_audioFile) # remove offset=length/6, duration=1, res_type='kaiser_fast'
 
     #URL 
-    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
-
-
+    #audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
+    #
+    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()), start=0, stop=44100)
+    #data = urlopen(url)
+    audio = audio.T
+    data_22k = librosa.resample(audio, samplerate, 22050)
     fig = plt.figure(figsize=[1.5,10])
     # Convert audio array to 'Constant-Q transform'. 86 bins are created to take pitches form C1 to C#8
-    conQfit = librosa.cqt(audio,hop_length=4096,n_bins=86)
+    
+    conQfit = librosa.cqt(data_22k,hop_length=4096,n_bins=86)
     librosa.display.specshow(conQfit)
                
     # Capture image and convert into 2D array
@@ -58,10 +66,10 @@ def predict_pitch(url):
     mfccs_norm = normalize(img, axis=0, norm='max')
         
     # close the plotted image so it wont show while in the loop
-    plt.close()
-    fig.clf()
-    plt.close(fig)
-    plt.close('all')
+    #plt.close()
+    #fig.clf()
+    #plt.close(fig)
+    #plt.close('all')
 
     # convert mfccs_norm into 4d array
 
@@ -76,7 +84,6 @@ def predict_pitch(url):
     
     # --------------------------------Load trained pitch model--------------------------
     # load trained pitch model
-    #global pitch_model
     #with open('PKL_trained_pitch_model.pkl', 'rb') as pitch_f:        
      #   pitch_model = pickle.load(pitch_f)
     pitch_model = tf.keras.models.load_model('pitch_model.h5')
@@ -90,7 +97,7 @@ def predict_pitch(url):
     pitch_scalar =  np.argmax(pitch_result, axis=None, out=None)
     
     # extract pitch names from csv to be a list
-    pitch_Name_df = pd.read_csv('Data/pitchName.csv')
+    pitch_Name_df = pd.read_csv('pitchName.csv')
     pitch_name_list = pitch_Name_df['0'].tolist()
     
     # reverse labelEncoder() function to get prediction label
@@ -99,7 +106,7 @@ def predict_pitch(url):
     return pitch_pred  
 
 
-# %%
+
 def predict_instrument(url):
     '''This function includes ETL process, loading trained model, 
         and using model to get prediction'''
@@ -111,11 +118,16 @@ def predict_instrument(url):
     #audio, sample_rate = librosa.load(input_audioFile) # remove offset=length/6, duration=1, res_type='kaiser_fast'
 
     #URL 
-    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
-                               
+    #audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
+    #audio = audio.T
+    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()), start=0, stop=44100)
+    #data = urlopen(url)
+    audio = audio.T
+    data_22k = librosa.resample(audio, samplerate, 22050)
+
     fig = plt.figure(figsize=[6,4])
     # Convert audio array to 'Constant-Q transform'. 86 bins are created to take pitches form C1 to C#8
-    mfccs = librosa.feature.melspectrogram(audio, hop_length = 1024)  
+    mfccs = librosa.feature.melspectrogram(data_22k, hop_length = 1024)  
     mel_spec = librosa.power_to_db(mfccs, ref=np.max,)
     librosa.display.specshow(mel_spec)
 
@@ -132,10 +144,10 @@ def predict_instrument(url):
     inst_mfccs_norm = normalize(img, axis=0, norm='max')
     
     # close the plotted image so it wont show while in the loop
-    plt.close()
-    fig.clf()
-    plt.close(fig)
-    plt.close('all')
+    #plt.close()
+    #fig.clf()
+    #plt.close(fig)
+    #plt.close('all')
         
     # convert mfccs_norm into 4d array
 
@@ -150,7 +162,6 @@ def predict_instrument(url):
     
     # --------------------------------Load trained inst model--------------------------
     # load trained inst model
-    #global inst_model
     #with open('CV_PKL_trained_instruments_model.pkl', 'rb') as inst_f:        
     #    inst_model = pickle.load(inst_f)
     #from keras.models import load_model
@@ -164,7 +175,7 @@ def predict_instrument(url):
     inst_scalar =  np.argmax(inst_result, axis=None, out=None)
     
     # extract inst names from csv to be a list
-    inst_Name_df = pd.read_csv('Data/CV_inst_Name.csv')
+    inst_Name_df = pd.read_csv('CV_inst_Name.csv')
     inst_name_list = inst_Name_df['0'].tolist()
     
     # reverse labelEncoder() function to get prediction label
@@ -174,16 +185,16 @@ def predict_instrument(url):
 
 # %%
 # -----------------------TESTING with local file path------------------------------
-#url = "https://raw.githubusercontent.com/susiexia/AI_Music/susie/BTb-ord-A%231-ff-N-T30d.wav"
-url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588480295/Uploaded_audio/euzkrwcoshxinmciwofi.wav"
-predict_pitch(url)            # OUTPUT IS A STRING 
+#url = "https://raw.githubusercontent.com/susiexia/AI_Music/master/Vn-ord-A%233-ff-4c-T15u.wav"
+#url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588535059/Uploaded_audio/l8mpn1bymuiyauvp6jqy.wav"
+#predict_pitch(url)            # OUTPUT IS A STRING 
 
 # %%
 # -----------------------TESTING with local file path------------------------------
 #file_name = 'Resources/AudioFiles/TinySOL/Strings/Viola/ordinario/Va-ord-C3-pp-4c-N.wav'
-#url = "https://raw.githubusercontent.com/susiexia/AI_Music/susie/BTb-ord-A%231-ff-N-T30d.wav"
-url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588480295/Uploaded_audio/euzkrwcoshxinmciwofi.wav"
-predict_instrument(url)            # OUTPUT IS A STRING 
+#url = "https://raw.githubusercontent.com/susiexia/AI_Music/master/Vn-ord-A%233-ff-4c-T15u.wav"
+#url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588535059/Uploaded_audio/l8mpn1bymuiyauvp6jqy.wav"
+#predict_instrument(url)            # OUTPUT IS A STRING 
 
 
 # %%
