@@ -5,7 +5,14 @@
 .DS_Store
 
 # config file
-config.py
+Code/config.py
 
+# Directories
 # Byte-compiled / optimized / DLL files
 __pycache__/
+.vscode/
+.ipynb_checkpoints/
+Resources/
+Code/.ipynb_checkpoints/
+Code/.vscode/
+Code/__pycache__/
