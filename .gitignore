@@ -7,5 +7,13 @@
 # config file
 config.py
 
+# Directories
 # Byte-compiled / optimized / DLL files
 __pycache__/
+
+.ipynb_checkpoints/
+.vscode/
+Resources/
+Code/.ipynb_checkpoints/
+Code/.vscode/
+Code/__pycache__/
