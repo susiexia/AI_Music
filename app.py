@@ -3,7 +3,6 @@ from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 
 import URLtest_predict_pipeline
-import Getting_spectrogram
 import cloudinary
 import cloudinary.uploader
 import matplotlib
@@ -42,8 +41,8 @@ def upload_file():
          wavURL = result['url']
          predicted_pitch = URLtest_predict_pipeline.predict_pitch(wavURL)
          predicted_inst = URLtest_predict_pipeline.predict_instrument(wavURL)
-         spect_p = Getting_spectrogram.get_spect_pitch(wavURL)
-         spect_i = Getting_spectrogram.get_spect_inst(wavURL)
+         spect_p = URLtest_predict_pipeline.get_spect_pitch(wavURL)
+         spect_i = URLtest_predict_pipeline.get_spect_inst(wavURL)
          img_p = cloudinary.uploader.unsigned_upload(spect_p, upload_preset= 'p74xgs7f', cloud_name = 'dmqj5ypfp', resource_type='auto' )
          img_i = cloudinary.uploader.unsigned_upload(spect_i, upload_preset= 'p74xgs7f', cloud_name = 'dmqj5ypfp', resource_type='auto' )
          image_p = img_p['url']
