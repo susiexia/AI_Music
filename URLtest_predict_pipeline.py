@@ -7,10 +7,10 @@ import librosa.display
 from sklearn.preprocessing import normalize
 from keras.models import load_model
 
-# buff depedence 
+# buff depedencies 
 import os
 import io
-import cv2 
+from cv2 import cv2 
 import matplotlib.pyplot as plt
 
 # URL 
@@ -20,13 +20,7 @@ from six.moves.urllib.request import urlopen
 
 import tensorflow as tf
 
-# unuse dependencies
 
-#import tensorflow_core
-#import keras
-#import pickle
-#from keras.models import Model
-# %%
 '''This python script includes 2 functions, predict_pitch and predict_instrument'''
 
 # create a function for pitch pred
@@ -34,22 +28,14 @@ def predict_pitch(url):
     '''This function includes ETL process, loading trained model, 
         and using model to get prediction'''
     
-    # -------------------------------ETL preprocessing part------------------------------------
-    '''TESTING: USE LOCAL FILE PATH AS input_audioFile '''
-
-    # use librosa convert audio file to spectrogram
-    #audio, sample_rate = librosa.load(input_audioFile) # remove offset=length/6, duration=1, res_type='kaiser_fast'
-
-    #URL 
-    #audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
-    #
-    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()), start=0, stop=44100)
-    #data = urlopen(url)
-    audio = audio.T
-    data_22k = librosa.resample(audio, samplerate, 22050)
-    fig = plt.figure(figsize=[1.5,10])
-    # Convert audio array to 'Constant-Q transform'. 86 bins are created to take pitches form C1 to C#8
+    #direclt use URL and convert to audio file
+    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
     
+    audio = audio.T
+    data_22k = librosa.resample(audio, samplerate, 21395) # local files: sampleRate = 22050
+    fig = plt.figure(figsize=[1.5,10])
+
+    # Convert audio array to 'Constant-Q transform'. 86 bins are created to take pitches form E1 to C#8
     conQfit = librosa.cqt(data_22k,hop_length=4096,n_bins=86)
     librosa.display.specshow(conQfit)
                
@@ -65,11 +51,11 @@ def predict_pitch(url):
     # normalize
     mfccs_norm = normalize(img, axis=0, norm='max')
         
-    # close the plotted image so it wont show while in the loop
-    #plt.close()
-    #fig.clf()
-    #plt.close(fig)
-    #plt.close('all')
+    # close the plotted image so it wont show 
+    plt.close()
+    fig.clf()
+    plt.close(fig)
+    plt.close('all')
 
     # convert mfccs_norm into 4d array
 
@@ -77,23 +63,17 @@ def predict_pitch(url):
     row = 1 
     spectrogram_shape1 = (row,) + mfccs_norm.shape + (channels,)
 
-    #x_reshape = np.array(i.reshape( (spectrogram_shape1) ) for i in mfccs_norm) 
     pitch_ETL_4d_output = mfccs_norm.reshape( (spectrogram_shape1) ) 
 
     #print(pitch_ETL_4d_output.shape)
     
-    # --------------------------------Load trained pitch model--------------------------
-    # load trained pitch model
-    #with open('PKL_trained_pitch_model.pkl', 'rb') as pitch_f:        
-     #   pitch_model = pickle.load(pitch_f)
+    # Load trained CNN model 
     pitch_model = tf.keras.models.load_model('pitch_model.h5')
     
-
-    # --------------------------------PREDICTION --------------------------
-    # pitch_model (from app.py) to predict
+    # use model to predict
     pitch_result = pitch_model.predict(pitch_ETL_4d_output)
     
-    # reverse to_categorical() function, get correlated pitch_name
+    # reverse to_categorical() function, get the correlated pitch_name
     pitch_scalar =  np.argmax(pitch_result, axis=None, out=None)
     
     # extract pitch names from csv to be a list
@@ -109,24 +89,17 @@ def predict_pitch(url):
 
 def predict_instrument(url):
     '''This function includes ETL process, loading trained model, 
-        and using model to get prediction'''
-    
-    # -------------------------------ETL preprocessing part------------------------------------
-    '''TESTING: USE LOCAL FILE PATH AS input_audioFile '''
-
-    # use librosa convert audio file to spectrogram
-    #audio, sample_rate = librosa.load(input_audioFile) # remove offset=length/6, duration=1, res_type='kaiser_fast'
+        and using model to get instrument prediction'''
 
     #URL 
-    #audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
-    #audio = audio.T
-    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()), start=0, stop=44100)
-    #data = urlopen(url)
+    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
+
     audio = audio.T
-    data_22k = librosa.resample(audio, samplerate, 22050)
+    data_22k = librosa.resample(audio, samplerate, 21395)
 
     fig = plt.figure(figsize=[6,4])
-    # Convert audio array to 'Constant-Q transform'. 86 bins are created to take pitches form C1 to C#8
+
+    # Convert audio array to 'Constant-Q transform'. 86 bins are created to take pitches form E1 to C#8
     mfccs = librosa.feature.melspectrogram(data_22k, hop_length = 1024)  
     mel_spec = librosa.power_to_db(mfccs, ref=np.max,)
     librosa.display.specshow(mel_spec)
@@ -144,31 +117,25 @@ def predict_instrument(url):
     inst_mfccs_norm = normalize(img, axis=0, norm='max')
     
     # close the plotted image so it wont show while in the loop
-    #plt.close()
-    #fig.clf()
-    #plt.close(fig)
-    #plt.close('all')
+    plt.close()
+    fig.clf()
+    plt.close(fig)
+    plt.close('all')
         
     # convert mfccs_norm into 4d array
-
     channels = 1 # number of audio channels
     row = 1 
     spectrogram_shape1 = (row,) + inst_mfccs_norm.shape + (channels,)
 
-    #x_reshape = np.array(i.reshape( (spectrogram_shape1) ) for i in mfccs_norm) 
     inst_ETL_4d_output = inst_mfccs_norm.reshape( (spectrogram_shape1) ) 
 
     #print(inst_ETL_4d_output.shape)
     
-    # --------------------------------Load trained inst model--------------------------
     # load trained inst model
-    #with open('CV_PKL_trained_instruments_model.pkl', 'rb') as inst_f:        
-    #    inst_model = pickle.load(inst_f)
-    #from keras.models import load_model
+
     inst_model = tf.keras.models.load_model('CV_trained_intruments_model.h5')
 
-    # --------------------------------PREDICTION --------------------------
-    # inst_model (from app.py) to predict
+    # use loaded model to predict 
     inst_result = inst_model.predict(inst_ETL_4d_output)
     
     # reverse to_categorical() function, get correlated inst_name
@@ -183,18 +150,3 @@ def predict_instrument(url):
     
     return inst_pred  
 
-# %%
-# -----------------------TESTING with local file path------------------------------
-#url = "https://raw.githubusercontent.com/susiexia/AI_Music/master/Vn-ord-A%233-ff-4c-T15u.wav"
-#url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588535059/Uploaded_audio/l8mpn1bymuiyauvp6jqy.wav"
-#predict_pitch(url)            # OUTPUT IS A STRING 
-
-# %%
-# -----------------------TESTING with local file path------------------------------
-#file_name = 'Resources/AudioFiles/TinySOL/Strings/Viola/ordinario/Va-ord-C3-pp-4c-N.wav'
-#url = "https://raw.githubusercontent.com/susiexia/AI_Music/master/Vn-ord-A%233-ff-4c-T15u.wav"
-#url = "https://res.cloudinary.com/dmqj5ypfp/video/upload/v1588535059/Uploaded_audio/l8mpn1bymuiyauvp6jqy.wav"
-#predict_instrument(url)            # OUTPUT IS A STRING 
-
-
-# %%
