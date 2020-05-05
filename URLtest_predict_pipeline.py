@@ -32,7 +32,7 @@ def predict_pitch(url):
     audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
     
     audio = audio.T
-    data_22k = librosa.resample(audio, samplerate, 21400) # local files: sampleRate = 22050
+    data_22k = librosa.resample(audio, samplerate, 21395) # local files: sampleRate = 22050
     fig = plt.figure(figsize=[1.5,10])
 
     # Convert audio array to 'Constant-Q transform'. 86 bins are created to take pitches form E1 to C#8
@@ -95,7 +95,7 @@ def predict_instrument(url):
     audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
 
     audio = audio.T
-    data_22k = librosa.resample(audio, samplerate, 21400)
+    data_22k = librosa.resample(audio, samplerate, 21395)
 
     fig = plt.figure(figsize=[6,4])
 
