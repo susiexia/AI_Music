@@ -5,7 +5,7 @@
 .DS_Store
 
 # config file
-config.py
+Code/config.py
 
 # Directories
 # Byte-compiled / optimized / DLL files
