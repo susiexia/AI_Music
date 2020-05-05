@@ -24,6 +24,7 @@ def upload_file():
    
    if request.method == 'POST': 
       f = request.files['file']
+      
       if   not "." in f.filename:
          return render_template('error.html')
       
@@ -33,15 +34,17 @@ def upload_file():
          
          #f.save(secure_filename(f.filename))
          #file_name = (f.filename)
-         result = cloudinary.uploader.unsigned_upload(f, upload_preset= 'q8vijdwg', cloud_name = 'dmqj5ypfp', resource_type='auto' )
-         wavURL = result['url']
+         #result = cloudinary.uploader.unsigned_upload(f, upload_preset= 'q8vijdwg', cloud_name = 'dmqj5ypfp', resource_type='auto' )
+         results = cloudinary.uploader.upload(f, api_key ='985558713519965', api_secret = 'oE0lsB5Y-h5nJZbzlphcWgVBMhY', cloud_name = 'lulu666666', resource_type = 'video', use_filename = True, unique_filename= False)
+         wavURL = results['url']
          predicted_pitch = URLtest_predict_pipeline.predict_pitch(wavURL)
          predicted_inst = URLtest_predict_pipeline.predict_instrument(wavURL)
+         version = wavURL
 
          #testing 
          #predicted_pitch = 'A3'
          #predicted_inst = 'Piano'
-         return render_template('dashboard.html', predicted_pitch = predicted_pitch, predicted_inst = predicted_inst) 
+         return render_template('dashboard.html', predicted_pitch = predicted_pitch, predicted_inst = predicted_inst, version = version) 
       
       else: 
          #return "file type error"
