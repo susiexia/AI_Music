@@ -69,6 +69,10 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 | Roles and Responsibilites, decision points, and notes | To review what tasks are assigned to each member and major decision points | Team | As often as needed | Google Docs | Meeting minutes will be recorded in the google docs | 
 | Extra Help | Ask for help outside of class and team | The team member(s) and TA | TA office hours are held everyday | Zoom | If extra help is needed, and the team is struggling to find a solution, we will consult with a TA during office hours | 
 
+**Technoloy**
+
+[Technology.md](support_info/technology.md)
+
 **Project Outline**
 
 1. Discovery Phase:
@@ -153,5 +157,5 @@ We used AWS S3 bucket to store the audio files (.wav) dataset. The .wav files ar
 PostGresDB is also used to create tables from original metadata files. 
 **Schema Diagram**
 
-![Schema_Diagram.PNG](/Schema_Diagram.PNG)
+![Schema_Diagram.PNG](support_info/Schema_Diagram.PNG)
 
