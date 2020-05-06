@@ -35,7 +35,7 @@ def predict_pitch(url):
     audio_shape = audio_orig.shape
 
     try:
-        audio_shape[1] == 2
+        audio_shape[1] > 1
         audio = audio_orig[:,0]
     except:
         audio = audio_orig
@@ -107,7 +107,7 @@ def predict_instrument(url):
     audio_shape = audio_orig.shape
 
     try:
-        audio_shape[1] == 2
+        audio_shape[1] > 1
         audio = audio_orig[:,0]
     except:
         audio = audio_orig
@@ -179,7 +179,7 @@ def get_spect_pitch(url):
     audio_shape = audio_orig.shape
 
     try:
-        audio_shape[1] == 2
+        audio_shape[1] > 1
         audio = audio_orig[:,0]
     except:
         audio = audio_orig
@@ -212,7 +212,7 @@ def get_spect_inst(url):
     audio_shape = audio_orig.shape
 
     try:
-        audio_shape[1] == 2
+        audio_shape[1] > 1
         audio = audio_orig[:,0]
     except:
         audio = audio_orig
