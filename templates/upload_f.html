@@ -15,9 +15,10 @@
     background-color: black;
     width: 100%;
     height: 80px;
-    position: fixed;
+    position: auto;
     left: 0;
     bottom: 0;
+    padding-top: 5%;
     }
 
     .header{
@@ -25,6 +26,7 @@
         height: 80px;
         display: block; 
         background-color: black;
+        box-shadow: 10px 10px #DDD;
     }
     .inner_header{
         width: 15%;
@@ -38,13 +40,13 @@
        display: table cell;
        float: center;
        font-family: 'Montserrat';
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 200;
       display: flex;
       align-items: center;
       justify-content: center;
       vertical-align: middle;
-      padding-top: 25px
+      text-align: center;
 }
 
    .loader{
@@ -60,7 +62,7 @@
    }
    p{
       float: center;
-       font-family: 'Montserrat';
+    font-family: 'Montserrat';
       font-size: 16px;
       font-weight: 200;
       display: flex;
@@ -68,8 +70,8 @@
       justify-content: center;
       vertical-align: middle;
       padding-top: 50px;
-      padding-left: 625px;
-      width: 300px;
+      padding-left: 25%;
+      width: 50%;
      
    }
     
@@ -118,6 +120,24 @@
         font-size: 10 px;
     }
 
+    ul{
+        padding-top: 3%;
+        font-family: "Montserrat";
+        text-align: center;
+        padding-bottom: 5%;
+      
+    }
+
+    li{
+        list-style: inside circle;
+        text-align:left;
+        padding-left: 45%;
+        padding-top: 0.5%;
+        
+    }
+
+   
+
    </style>
   
   <head>
@@ -137,7 +157,7 @@
      
       <div class = "loader">
    
-      <form action = "http://localhost:5000/uploader" method = "POST" 
+      <form action = "/uploader" method = "POST" 
          enctype = "multipart/form-data">
          <input type = "file" name = "file" />
          <input type = "submit"/>
@@ -146,13 +166,36 @@
 
       <p> 
           Please upload a .wav file that you would like to have the pitch and instrument identified. Our convolusional nueral networks will output the instrument and pitch, as well as the pitch and instrument spectrogram, and the model information.  
-        ** KEEP BROWSER 100% ZOOM **
+        
       </p>
+
+      <ul>
+        Our model can identify 82 pitches from E1 to C#8 and 14 instruments listed below:
+        <li>Accordian</li> 
+        <li>Alto Saxophone</li>
+        <li>Bass Tuba</li>
+        <li>Bassoon</li>
+        <li>Cello</li>
+        <li>Clarinet in Bb</li>
+        <li>Contrabass</li>
+        <li>Flute</li>
+        <li>French Horn</li>
+        <li>Oboe</li>
+        <li>Trombone</li>
+        <li>Trumpet in C</li>
+        <li>Viola</li>
+        <li>Violin</li>
+    </ul>
+    
       
       
       
    <div class= "footer"> 
       <h3> Created by: Heba Aly, Louise Hsu, Michael Nakashima, Francis Palaez, Susie Xia</h3>
+      
+      <h3 class = "LinkedIn"> LinkedIn: https://www.linkedin.com/in/heba-aly-349737100, https://www.linkedin.com/in/louisehsu/, https://www.linkedin.com/in/manakashima/,  
+        https://www.linkedin.com/in/francis-rey-pelaez-72382121/, https://www.linkedin.com/in/susie-xia-0a889791/
+      </h3>
    </div>
  
    </body>

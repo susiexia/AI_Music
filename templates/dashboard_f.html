@@ -34,6 +34,7 @@
         height: 80px;
         display: block; 
         background-color: black;
+        box-shadow: 10px 10px #ddd;
     }
 
     
@@ -103,12 +104,14 @@
         align-items: middle;
         margin: 1em;
         margin-right: 1em;
+
     }
 
 
     .wrapper > div{
         background: #eeee;
         padding: 1em;
+
     }
 
     audio {
@@ -176,8 +179,8 @@
         padding-left: 150px;
         color: black;
         font: xx-large;
-        width: 200px;
-        height: 200px;
+        /* width: 200px; */
+        /* height: 200px; */ 
         font-size: 100px;
     }
 
@@ -188,21 +191,26 @@
         padding-left: 150px;
         color: black;
         font: xx-large;
-        width: 200px;
-        height: 200px;
+        /* width: 200px; */
+        /* height: 200px; */
         font-size: 50px;
     }
+    .shadow{
+        box-shadow: 10px 10px 3px #ddd;
+    }
 
-
+    .body{
+        width: auto;
+    }
 </style>
 
 <head>
     
-        <title></title>
+        <title>Dashboard</title>
         
 </head>
 <body>
-
+    <div class = "body">
     <div class ="header">
         <div class = "inner_header"> 
             <div class = "logo_container">
@@ -217,7 +225,7 @@
 
 
     <div class ="wrapper">
-      <div class ="box1"> Play Back:
+      <div class ="box1 shadow"> Play Back:
          
           <div> 
             <audio  controls="controls">
@@ -227,53 +235,53 @@
             </audio>
           </div>
       </div>
-      <div class ="box2">Pitch:
+      <div class ="box2 shadow">Pitch:
           <h1> {{ predicted_pitch }} </h1>
       </div>
-      <div class ="SpecP"> Pitch Spectrogram:
+      <div class ="SpecP shadow"> Pitch Spectrogram:
         <div>
           <img src = "{{ image_p }}"/>
         </div>
       </div>
 
-      <div class ="SpecI"> Instrument Spectrogram:
+      <div class ="SpecI shadow"> Instrument Spectrogram:
         <div>
           <img src = "{{ image_i }}"/>
         </div>
       </div>
 
-      <div class ="box3">Pitch Model:
+      <div class ="box3 shadow">Pitch Model:
         <div>
           <img src = "https://i.imgur.com/lEGm3Y6.png"/>
         </div>
       </div>
         
-      <div class ="box4">Instrument:
+      <div class ="box4 shadow">Instrument:
           <h1>{{ predicted_inst }}</h1>
       </div>
       
-      <div class ="box5">Pitch Epoch:
+      <div class ="box5 shadow">Pitch Epoch:
         <div>
             <img src = "https://i.imgur.com/u4EmDwb.png"/>
           </div>
       </div>
-      <div class ="box6">Pitch Plots:
+      <div class ="box6 shadow">Pitch Plots:
           <div>
             <img src = "https://i.imgur.com/FCjNh3Z.png"/>
           </div>
       </div>
-      <div class ="box7">Instrument Model:
+      <div class ="box7 shadow">Instrument Model:
         <div>
             <img src = "https://i.imgur.com/Gg4WwW7.png"/>
         </div>
 
       </div>
-      <div class ="box8">Instrument Epoch:
+      <div class ="box8 shadow">Instrument Epoch:
         <div>
             <img src = "https://i.imgur.com/8ETBKQG.png"/>
         </div>
       </div>
-      <div class ="box9">Instrument Plots:
+      <div class ="box9 shadow">Instrument Plots:
         <div>
             <img src = "https://i.imgur.com/gTQexaO.png"/>
         </div>
@@ -281,7 +289,7 @@
     </div>
 
     <div class= "footer"> </div>
- 
+</div>  
 </body>
 
 </html>
