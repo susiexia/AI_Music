@@ -16,7 +16,7 @@ app.config["ALLOWED_EXTENSIONS"] = ["wav", "WAV"]
 
 @app.route('/')
 def first_upload_file():
-   return render_template('upload_LH.html')
+   return render_template('upload_f.html')
 
 
 
@@ -53,7 +53,7 @@ def upload_file():
          #testing 
          #predicted_pitch = 'A3'
          #predicted_inst = 'Piano'
-         return render_template('dashboard.html', predicted_pitch = predicted_pitch, predicted_inst = predicted_inst, version = version, image_p = image_p, image_i = image_i) 
+         return render_template('dashboard_f.html', predicted_pitch = predicted_pitch, predicted_inst = predicted_inst, version = version, image_p = image_p, image_i = image_i) 
       
       else: 
          #return "file type error"

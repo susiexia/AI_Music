@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+   <style>
+      *{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    }
+
+    .footer {
+    display: block;
+    background-color: black;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    }
+
+    .header{
+        width: 100%;
+        height: 80px;
+        display: block; 
+        background-color: black;
+    }
+    .inner_header{
+        width: 15%;
+        height: 100%;
+        display: block;
+        margin:0 auto;
+        background-color:black;
+    }
+    .footer h3{
+       color: white;
+       display: table cell;
+       float: center;
+       font-family: 'Montserrat';
+      font-size: 16px;
+      font-weight: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      padding-top: 25px
+}
+
+   .loader{
+      float: center;
+       font-family: 'Montserrat';
+      font-size: 16px;
+      font-weight: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      padding-top: 100px;
+   }
+   p{
+      float: center;
+       font-family: 'Montserrat';
+      font-size: 16px;
+      font-weight: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      padding-top: 50px;
+      padding-left: 625px;
+      width: 300px;
+     
+   }
+    
+    .logo_container{
+        height: 100%;
+        display: table;
+        float: left;
+    }
+    
+    .logo_container h1{
+        color: white;
+        height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        font-family: 'Montserrat';
+        font-size: 32px;
+        font-weight: 200;
+    }
+
+    .logo_container h1 span{
+        font-weight:800;
+    }
+
+    .navigation{
+        float: right;
+        height: 100%;   
+    }
+
+    .navigation a{
+        height: 100%;
+        display: table;
+        float: right;
+        padding: 0px 20px;
+    }
+
+    .navigation a:last-child{
+        padding-right: 0;
+    }
+
+    .navigation a li{
+        display: table-cell;
+        vertical-align: middle;
+        height:100%;
+        color: white;
+        font-family: "Montserrat";
+        font-size: 10 px;
+    }
+
+   </style>
+  
+  <head>
+    
+   <title></title>
+   
+   </head>
+   <body>
+
+      <div class ="header">
+         <div class = "inner_header"> 
+             <div class = "logo_container">
+                 <h1>Audio<span>Uploader</span></h1>
+             </div>
+         </div>
+     </div>
+     
+      <div class = "loader">
+   
+      <form action = "http://localhost:5000/uploader" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form> 
+      </div>
+
+      <p> 
+          Please upload a .wav file that you would like to have the pitch and instrument identified. Our convolusional nueral networks will output the instrument and pitch, as well as the pitch and instrument spectrogram, and the model information.  
+        ** KEEP BROWSER 100% ZOOM **
+      </p>
+      
+      
+      
+   <div class= "footer"> 
+      <h3> Created by: Heba Aly, Louise Hsu, Michael Nakashima, Francis Palaez, Susie Xia</h3>
+   </div>
+ 
+   </body>
+
+
+
+
+</html>
