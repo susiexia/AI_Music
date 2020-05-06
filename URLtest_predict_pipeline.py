@@ -28,9 +28,18 @@ def predict_pitch(url):
     '''This function includes ETL process, loading trained model, 
         and using model to get prediction'''
     
-    #direclt use URL and convert to audio file
-    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
+    #directly use URL and convert to audio file
+    audio_orig, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
     
+    # If two+ channels, then select only one channel
+    audio_shape = audio_orig.shape
+
+    try:
+        audio_shape[1] > 1
+        audio = audio_orig[:,0]
+    except:
+        audio = audio_orig
+
     audio = audio.T
     data_22k = librosa.resample(audio, samplerate, 21395) # local files: sampleRate = 22050
     fig = plt.figure(figsize=[1.5,10])
@@ -92,7 +101,16 @@ def predict_instrument(url):
         and using model to get instrument prediction'''
 
     #URL 
-    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
+    audio_orig, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
+
+    #If two+ channels, then select only one channel
+    audio_shape = audio_orig.shape
+
+    try:
+        audio_shape[1] > 1
+        audio = audio_orig[:,0]
+    except:
+        audio = audio_orig
 
     audio = audio.T
     data_22k = librosa.resample(audio, samplerate, 21395)
@@ -155,15 +173,25 @@ def get_spect_pitch(url):
     '''This function gets the spectrogram for pitch'''
     
     #direclt use URL and convert to audio file
-    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
-    
+    audio_orig, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
+
+    # If two+ channels, then select only one channel
+    audio_shape = audio_orig.shape
+
+    try:
+        audio_shape[1] > 1
+        audio = audio_orig[:,0]
+    except:
+        audio = audio_orig
+
     audio = audio.T
     data_22k = librosa.resample(audio, samplerate, 21395) # local files: sampleRate = 22050
     fig = plt.figure(figsize=[1.5,10])
 
     # Convert audio array to 'Constant-Q transform'. 86 bins are created to take pitches form E1 to C#8
     conQfit = librosa.cqt(data_22k,hop_length=4096,n_bins=86)
-    librosa.display.specshow(conQfit)
+    # librosa.display.specshow(conQfit, y_axis='cqt_note', cmap='gray_r') # Shows notes on Y axis
+    librosa.display.specshow(conQfit, cmap='gray_r') # doesn't show notes on Y axis
                
     # Capture image and convert into 2D array
     buf = io.BytesIO()
@@ -178,7 +206,16 @@ def get_spect_inst(url):
     '''This function get the spectrogram for instrument'''
 
     #URL 
-    audio, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
+    audio_orig, samplerate = sf.read(io.BytesIO(urlopen(url).read()))
+
+    # If two+ channels, then select only one channel
+    audio_shape = audio_orig.shape
+
+    try:
+        audio_shape[1] > 1
+        audio = audio_orig[:,0]
+    except:
+        audio = audio_orig
 
     audio = audio.T
     data_22k = librosa.resample(audio, samplerate, 21395)
@@ -188,7 +225,7 @@ def get_spect_inst(url):
     # Convert audio array to 'Constant-Q transform'. 86 bins are created to take pitches form E1 to C#8
     mfccs = librosa.feature.melspectrogram(data_22k, hop_length = 1024)  
     mel_spec = librosa.power_to_db(mfccs, ref=np.max,)
-    librosa.display.specshow(mel_spec)
+    librosa.display.specshow(mel_spec, cmap='gray_r')
 
     # Capture image and convert into 2D array
     buf = io.BytesIO()
