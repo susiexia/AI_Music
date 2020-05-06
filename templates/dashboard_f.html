@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    }
+
+    .footer {
+    display: block;
+    background-color: black;
+    width: 100%;
+    height: 80px;
+    }
+
+    div {
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
+        font-style:bold;
+    }
+    img {
+        width: 400px;
+        height:300px;
+        padding: 10px;
+        margin: 20px;
+
+    }
+
+   
+    .header{
+        width: 100%;
+        height: 80px;
+        display: block; 
+        background-color: black;
+    }
+
+    
+
+    .inner_header{
+        width: 25%;
+        height: 100%;
+        display: block;
+        margin:0 auto;
+        background-color:black;
+    }
+
+    .logo_container{
+        height: 100%;
+        display: table;
+        float: left;
+    }
+
+    .logo_container h1{
+        color: white;
+        height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        font-family: 'Montserrat';
+        font-size: 32px;
+        font-weight: 200;
+    }
+
+    .logo_container h1 span{
+        font-weight:800;
+    }
+
+    .navigation{
+        float: right;
+        height: 100%;   
+    }
+
+    .navigation a{
+        height: 100%;
+        display: table;
+        float: right;
+        padding: 0px 20px;
+    }
+
+    .navigation a:last-child{
+        padding-right: 0;
+    }
+
+    .navigation a li{
+        display: table-cell;
+        vertical-align: middle;
+        height:100%;
+        color: white;
+        font-family: "Montserrat";
+        font-size: 10 px;
+    }
+
+    .player{
+        width: 100%;
+    }
+    .wrapper{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: minmax(100px, auto);
+        grid-gap: 1em;
+        justify-items:middle;
+        align-items: middle;
+        margin: 1em;
+        margin-right: 1em;
+    }
+
+
+    .wrapper > div{
+        background: #eeee;
+        padding: 1em;
+    }
+
+    audio {
+  width:100%;
+}
+    .box1{
+        /*align-self:start;*/
+        grid-column: 1/3;
+        grid-row: 1/2;
+        font-family: 'Montserrat';
+    }
+    .box2{
+        /*align-self:end;*/
+        grid-column: 3;
+        grid-row: 1/3;
+    }
+    .box3{
+        /*justify-self:end;*/
+        grid-column: 1/2;
+        grid-row: 5/8;
+    }
+
+    .box4{
+        grid-column: 3;
+        grid-row: 3/5;
+    }
+
+    .SpecP{
+        grid-column: 1/2;
+        grid-row: 2/5
+    }
+
+    .SpecI{
+        grid-column: 2/3;
+        grid-row: 2/5
+    }
+    .box5{
+        grid-column: 2/3;
+        grid-row: 5/8
+    }
+
+    .box6{
+        grid-column: 3;
+        grid-row: 5/8;
+    }
+
+    .box7{
+        grid-column: 1/2;
+        grid-row: 8/11;
+    }
+
+    .box8{
+        grid-column: 2/3;
+        grid-row: 8/11;
+    }
+
+    .box9{
+        grid-column: 3;
+        grid-row:8/11;
+    }
+
+    .box2 h1{
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: 150px;
+        color: black;
+        font: xx-large;
+        width: 200px;
+        height: 200px;
+        font-size: 100px;
+    }
+
+    .box4 h1{
+
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: 150px;
+        color: black;
+        font: xx-large;
+        width: 200px;
+        height: 200px;
+        font-size: 50px;
+    }
+
+
+</style>
+
+<head>
+    
+        <title></title>
+        
+</head>
+<body>
+
+    <div class ="header">
+        <div class = "inner_header"> 
+            <div class = "logo_container">
+                <h1>Audio<span>Dashboard</span></h1>
+            </div>
+            <ul class="navigation">
+                <!-- <a><li>Home</li></a> -->
+                <a href="/"><li>Home</li></a>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class ="wrapper">
+      <div class ="box1"> Play Back:
+         
+          <div> 
+            <audio  controls="controls">
+                Your browser does not support the audio element.
+                <source src="{{ version }}" type="audio/wav">
+            
+            </audio>
+          </div>
+      </div>
+      <div class ="box2">Pitch:
+          <h1> {{ predicted_pitch }} </h1>
+      </div>
+      <div class ="SpecP"> Pitch Spectrogram:
+        <div>
+          <img src = "{{ image_p }}"/>
+        </div>
+      </div>
+
+      <div class ="SpecI"> Instrument Spectrogram:
+        <div>
+          <img src = "{{ image_i }}"/>
+        </div>
+      </div>
+
+      <div class ="box3">Pitch Model:
+        <div>
+          <img src = "https://i.imgur.com/lEGm3Y6.png"/>
+        </div>
+      </div>
+        
+      <div class ="box4">Instrument:
+          <h1>{{ predicted_inst }}</h1>
+      </div>
+      
+      <div class ="box5">Pitch Epoch:
+        <div>
+            <img src = "https://i.imgur.com/u4EmDwb.png"/>
+          </div>
+      </div>
+      <div class ="box6">Pitch Plots:
+          <div>
+            <img src = "https://i.imgur.com/FCjNh3Z.png"/>
+          </div>
+      </div>
+      <div class ="box7">Instrument Model:
+        <div>
+            <img src = "https://i.imgur.com/Gg4WwW7.png"/>
+        </div>
+
+      </div>
+      <div class ="box8">Instrument Epoch:
+        <div>
+            <img src = "https://i.imgur.com/8ETBKQG.png"/>
+        </div>
+      </div>
+      <div class ="box9">Instrument Plots:
+        <div>
+            <img src = "https://i.imgur.com/gTQexaO.png"/>
+        </div>
+      </div>
+    </div>
+
+    <div class= "footer"> </div>
+ 
+</body>
+
+</html>
