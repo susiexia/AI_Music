@@ -1,8 +1,10 @@
 # AI_Music
 
+[Link to the application](http://127.0.0.1:5000/)
+
 ## Presentation
 
-[Link to Presentation](https://docs.google.com/presentation/d/1o4-t0NQkvq6Rk56Y5zcPnzM8eqBO47HIUeoQIurb6l8/edit?usp=sharing)
+[Link to Presentation](https://docs.google.com/presentation/d/1kEF8Ls6sj8SkUujp75TAO7g3N7EcYz2oysIN8mwkpZ8/edit#slide=id.g773fec2c70_5_6)
 
 The slides contain the following from Segment 2 - presentation and dashboard:
 
