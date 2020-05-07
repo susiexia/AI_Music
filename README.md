@@ -1,6 +1,6 @@
 # AI_Music
 
-[Link to the application](http://127.0.0.1:5000/)
+[Link to the application](https://ai-music-web.herokuapp.com/)
 
 ## Presentation
 
