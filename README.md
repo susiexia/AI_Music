@@ -2,6 +2,9 @@
 
 [Link to the application](https://ai-music-web.herokuapp.com/)
 
+Example Result for a Bass Tuba playing A1
+![result example](https://github.com/susiexia/AI_Music/blob/master/support_info/exampleResult.JPG)
+
 ## Presentation
 
 [Link to Presentation](https://docs.google.com/presentation/d/1kEF8Ls6sj8SkUujp75TAO7g3N7EcYz2oysIN8mwkpZ8/edit#slide=id.g773fec2c70_5_6)
@@ -71,7 +74,7 @@ The TinySOL_metadata.csv contains text data and information of each path file in
 | Roles and Responsibilites, decision points, and notes | To review what tasks are assigned to each member and major decision points | Team | As often as needed | Google Docs | Meeting minutes will be recorded in the google docs | 
 | Extra Help | Ask for help outside of class and team | The team member(s) and TA | TA office hours are held everyday | Zoom | If extra help is needed, and the team is struggling to find a solution, we will consult with a TA during office hours | 
 
-**Technoloy**
+**Technology**
 
 [Technology.md](support_info/technology.md)
 
@@ -151,7 +154,6 @@ Limitations:
 - Instrument: One out of the 14 instruments listed earlier
 - Pitch (note and octave): The musical note letter and the octave number
 
-
 ## Database 
 
 We used AWS S3 bucket to store the audio files (.wav) dataset. The .wav files are extracted from the S3 Bucket and converted into spectrograms. Two dataframes are created, loaded and saved as tables to PostgresDB *(Please refer to ETL Section for more details)*. The two tables create are called *Notes_Spectrogram_Table* and *Instruments_Spectrogram_Table*.  Those two tables are then joined using an sql query to create a third table that contains spectrograms, instruments, and notes data.  
@@ -160,4 +162,3 @@ PostGresDB is also used to create tables from original metadata files.
 **Schema Diagram**
 
 ![Schema_Diagram.PNG](support_info/Schema_Diagram.PNG)
-
