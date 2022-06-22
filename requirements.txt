@@ -58,7 +58,7 @@ nbformat==4.4.0
 nltk==3.4.5
 notebook==6.0.2
 numba==0.48.0
-numpy==1.18.2
+numpy==1.22.0
 opencv-python==4.2.0.34
 pandocfilters==1.4.2
 parso==0.5.2
